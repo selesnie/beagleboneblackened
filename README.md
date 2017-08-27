@@ -42,7 +42,7 @@ debian@beaglebone:~/dev/hello$ sudo insmod hello.ko
 ### Check kernel log
 debian@beaglebone:~/dev/hello$ tail /var/log/kern.log
 
-May  5 18:17:50 beaglebone kernel: [ 1951.525671] Hello Foobar from driver init.
+May  5 19:14:57 beaglebone kernel: [ 5378.641538] Hello, developer! Module loaded
 
 ### Remove module
 debian@beaglebone:~/dev/hello$ sudo rmmod hello
@@ -50,4 +50,4 @@ debian@beaglebone:~/dev/hello$ sudo rmmod hello
 ### Check kernel log
 debian@beaglebone:~/dev/hello$ tail /var/log/kern.log
 
-May  5 18:19:11 beaglebone kernel: [ 2033.199746] Goodbye, Foobar!
+May  5 19:16:02 beaglebone kernel: [ 5443.701192] Goodbye, developer! Module removed
