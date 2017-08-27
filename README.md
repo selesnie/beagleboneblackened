@@ -19,7 +19,13 @@ debian@192.168.7.2's password:
 
 Last login: Fri May  5 17:55:58 2017 from 192.168.7.1
 
-debian@beaglebone:~$ 
+debian@beaglebone:~$
+
+debian@beaglebone:~$ uname -a
+
+Linux beaglebone 4.4.9-ti-r25 #1 SMP Thu May 5 23:08:13 UTC 2016 armv7l GNU/Linux
+
+debian@beaglebone:~$
 
 
 ## Build kernel image for BeagleBone Black
