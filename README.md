@@ -20,3 +20,18 @@ debian@192.168.7.2's password:
 Last login: Fri May  5 17:55:58 2017 from 192.168.7.1
 
 debian@beaglebone:~$ 
+
+
+## Build kernel image for BeagleBone Black
+
+$ git clone https://github.com/torvalds/linux.git
+
+$ cd linux
+
+$ git checkout -b 4.9.y stable/linux-4.9.y
+
+$ make -j$(nproc) ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabi- xconfig
+
+$ make -j$(nproc) ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabi- zImage
+
+$ make -j$(nproc) ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabi- am335x-boneblack.dtb
