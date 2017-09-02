@@ -34,7 +34,7 @@ beagle$
 
 ## Cross compile for ARM in the host x86_64 system (Ubuntu 16.04 x86_64 LTS)
 
-host$ make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- distclean && make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- xconfig
+host$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- distclean && make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- xconfig
 
 host$ make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- zImage && make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- am335x-boneblack.dtb
 
