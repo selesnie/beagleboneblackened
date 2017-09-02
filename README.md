@@ -2,9 +2,14 @@
 
 Purpose of this project is to be familiar with BeagleBone Black development board.
 
+Reference material:
+
+http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
+
+
 ## First boot
 
-$ ssh debian@192.168.7.2
+host$ ssh debian@192.168.7.2
 
 
 Debian GNU/Linux 8
@@ -19,13 +24,13 @@ debian@192.168.7.2's password:
 
 Last login: Fri May  5 17:55:58 2017 from 192.168.7.1
 
-debian@beaglebone:~$
+beagle$
 
-debian@beaglebone:~$ uname -a
+beagle$ uname -a
 
 Linux beaglebone 4.4.9-ti-r25 #1 SMP Thu May 5 23:08:13 UTC 2016 armv7l GNU/Linux
 
-debian@beaglebone:~$
+beagle$
 
 ## U-Boot
 
@@ -41,27 +46,37 @@ done
 Bytes transferred = 25 (19 hex)
 =>
 
-## Build in target
+## Cross compile for ARM in the host x86_64 system (Ubuntu 16.04 x86_64 LTS)
+
+host$ make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- distclean
+
+host$ make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- xconfig
+
+host$ make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- zImage
+
+host$ make -j$(nproc) ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- am335x-boneblack.dtb
+
+## Build in target (BeagleBone Black)
 
 This is fast start for kernel development if you need just try how simple kernel module works. No need to install crosstools to build ARM architecture on x86 host system.
 
 It's worth to mention that installing crosstools and cross compiling for ARM in host system is recommended!
 
 ### Build module
-debian@beaglebone:~/dev/hello$ make
+beagle$ ~/dev/hello$ make
 
 ### Install module
-debian@beaglebone:~/dev/hello$ sudo insmod hello.ko
+beagle$~/dev/hello$ sudo insmod hello.ko
 
 ### Check kernel log
-debian@beaglebone:~/dev/hello$ tail /var/log/kern.log
+beagle$~/dev/hello$ tail /var/log/kern.log
 
 May  5 19:14:57 beaglebone kernel: [ 5378.641538] Hello, developer! Module loaded
 
 ### Remove module
-debian@beaglebone:~/dev/hello$ sudo rmmod hello
+beagle$~/dev/hello$ sudo rmmod hello
 
 ### Check kernel log
-debian@beaglebone:~/dev/hello$ tail /var/log/kern.log
+beagle$~/dev/hello$ tail /var/log/kern.log
 
 May  5 19:16:02 beaglebone kernel: [ 5443.701192] Goodbye, developer! Module removed
