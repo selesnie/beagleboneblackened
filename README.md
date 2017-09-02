@@ -27,6 +27,20 @@ Linux beaglebone 4.4.9-ti-r25 #1 SMP Thu May 5 23:08:13 UTC 2016 armv7l GNU/Linu
 
 debian@beaglebone:~$
 
+## U-Boot
+
+=> tftp 0x81000000 kakkatesti
+link up on port 0, speed 100, full duplex
+Using cpsw device
+TFTP from server 192.168.8.1; our IP address is 192.168.8.2
+Filename 'kakkatesti'.
+Load address: 0x81000000
+Loading: 
+	 7.8 KiB/s
+done
+Bytes transferred = 25 (19 hex)
+=>
+
 ## Build in target
 
 This is fast start for kernel development if you need just try how simple kernel module works. No need to install crosstools to build ARM architecture on x86 host system.
